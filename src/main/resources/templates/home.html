@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - RentaPelis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-4">
+        <div class="jumbotron">
+            <h1 class="display-4">Bienvenido a RentaPelis</h1>
+            <p class="lead">Sistema de gestión para tienda de renta de películas</p>
+            <hr class="my-4">
+            <p>Selecciona una de las siguientes opciones para comenzar:</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-film fa-4x mb-3 text-primary"></i>
+                        <h5 class="card-title">Gestión de Películas</h5>
+                        <p class="card-text">Administra el catálogo de películas disponibles para renta.</p>
+                        <a th:href="@{/peliculas}" class="btn btn-primary">Ir a Películas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-4x mb-3 text-success"></i>
+                        <h5 class="card-title">Gestión de Clientes</h5>
+                        <p class="card-text">Administra la información de los clientes registrados.</p>
+                        <a th:href="@{/clientes}" class="btn btn-success">Ir a Clientes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-exchange-alt fa-4x mb-3 text-danger"></i>
+                        <h5 class="card-title">Gestión de Rentas</h5>
+                        <p class="card-text">Registra nuevas rentas y gestiona las devoluciones.</p>
+                        <a th:href="@{/rentas}" class="btn btn-danger">Ir a Rentas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-history fa-4x mb-3 text-info"></i>
+                        <h5 class="card-title">Historial de Rentas</h5>
+                        <p class="card-text">Consulta el historial de rentas por cliente o película.</p>
+                        <a th:href="@{/rentas/historial}" class="btn btn-info">Ver Historial</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-pdf fa-4x mb-3 text-warning"></i>
+                        <h5 class="card-title">Catálogo en PDF</h5>
+                        <p class="card-text">Genera un PDF con el catálogo de películas disponibles.</p>
+                        <a th:href="@{/peliculas/catalogo-pdf}" class="btn btn-warning" target="_blank">Generar PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

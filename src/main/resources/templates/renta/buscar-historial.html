@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Historial - RentaPelis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">
+                    <i class="fas fa-search"></i> Buscar Historial de Rentas
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-user"></i> Buscar por Cliente
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/rentas/historial/buscar}" method="get">
+                                    <div class="form-group">
+                                        <label for="clienteId">Seleccione un Cliente:</label>
+                                        <select id="clienteId" name="clienteId" class="form-control" required>
+                                            <option value="">-- Seleccione un cliente --</option>
+                                            <option th:each="cliente : ${@clienteService.listarTodos()}" 
+                                                    th:value="${cliente.idCliente}" 
+                                                    th:text="${cliente.nombre}"></option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-search"></i> Buscar Historial
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-film"></i> Buscar por Película
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/rentas/historial/buscar}" method="get">
+                                    <div class="form-group">
+                                        <label for="peliculaId">Seleccione una Película:</label>
+                                        <select id="peliculaId" name="peliculaId" class="form-control" required>
+                                            <option value="">-- Seleccione una película --</option>
+                                            <option th:each="pelicula : ${@peliculaService.listarTodas()}" 
+                                                    th:value="${pelicula.idPelicula}" 
+                                                    th:text="${pelicula.titulo}"></option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search"></i> Buscar Historial
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <a th:href="@{/rentas}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver a Rentas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
